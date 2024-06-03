@@ -102,6 +102,142 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+    //STEP 2
+    let consoleLog = errorBtns[0];
+    consoleLog.addEventListener('click', () => {
+      console.log('Log Message');
+    });
+
+    let consoleError = errorBtns[1];
+    consoleError.addEventListener('click', () => {
+      console.error('Error Message');
+    });
+
+    let consoleCount = errorBtns[2];
+    consoleCount.addEventListener('click', () => {
+      console.count('Counter');
+    });
+
+    let consoleWarn = errorBtns[3];
+    consoleWarn.addEventListener('click', () => {
+      
+      console.warn('Warning message');
+    });
+
+    let consoleAssert = errorBtns[4];
+    consoleAssert.addEventListener('click', () => {
+      const x = 5;
+      const y = 3;
+      const reason = 'x + y is not 9';
+      console.assert(x + y == 9, {x, y, reason});
+    });
+
+    let consoleClear = errorBtns[5];
+    consoleClear.addEventListener('click', () => {
+      console.clear();
+    });
+
+    let consoleDir = errorBtns[6];
+    consoleDir.addEventListener('click', () => {
+      console.dir(consoleDir);
+    });
+
+    let consoleDirxml = errorBtns[7];
+    consoleDirxml.addEventListener('click', () => {
+      console.dirxml(consoleDirxml);
+    });
+
+    let consoleGroup = errorBtns[8];
+    consoleGroup.addEventListener('click', () => {
+      console.group('GROUP');
+    });
+
+    let consoleGroupEnd = errorBtns[9];
+    consoleGroupEnd.addEventListener('click', () => {
+      console.groupEnd('GROUP');
+    });
+
+    let consoleTable = errorBtns[10];
+    consoleTable.addEventListener('click', () => {
+      console.table(errorBtns);
+    });
+
+    let consoleTime = errorBtns[11];
+    consoleTime.addEventListener('click', () => {
+      console.time('TIMER');
+    });
+
+    let consoleTimeEnd = errorBtns[12];
+    consoleTimeEnd.addEventListener('click', () => {
+      console.timeEnd('TIMER');
+    });
+
+    let consoleTrace = errorBtns[13];
+    consoleTrace.addEventListener('click', () => {
+      const first = () => { second(); };
+      const second = () => { third(); };
+      const third = () => { fourth(); };
+      const fourth = () => { console.trace(); };
+      first();
+    });
+    
+
+    //STEP 3
+
+    try {
+      //Miss spelled query intentionally to trigger an error
+      let output = document.querySelector('utput');
+      console.log(output.value);
+    } catch (err) {
+      console.log("YOU ENCOUNTERED AN ERROR");
+      console.log(err);
+    }
+
+    try {
+      // Throws error if output is empty
+      let output = document.querySelector('output');
+      if (output.value == '') {
+        throw new Error("Empty Output");
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      console.log('This prints no matter what');
+    }
+
+    //STEP 4
+
+    class MyCustomError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "MyCustomError";
+      }
+    }
+    try {
+      throw new MyCustomError("This is a custom error!");
+    } catch (error) {
+      console.log(error);
+    }
+
+    //STEP 5
+
+    let globalError = errorBtns[14];
+    globalError.addEventListener('click', () => {
+      try {
+        throw new Error("This code clearly is broken");
+      } catch (error) {
+        console.log(error);
+      }
+    })
+
+  </script>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "885a424fd1c242ab82da1e741e24c1c9"
+      // for more configuration options, see https://docs.trackjs.com
+    });
   </script>
 </body>
 
