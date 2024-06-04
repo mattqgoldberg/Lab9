@@ -234,7 +234,7 @@
       try {
         throw new Error("This code clearly is broken");
       } catch (error) {
-        console.log(error);
+        TrackJS.track(error);
       }
     })
 
