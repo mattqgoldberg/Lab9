@@ -229,14 +229,15 @@
 
     //STEP 5
 
+    window.addEventListener('error', (event, source, lineno, colno, error) => {
+      console.log('GLOBAL ERROR');
+      TrackJS.track(error);
+    });
+    
     let globalError = errorBtns[14];
     globalError.addEventListener('click', () => {
-      try {
-        throw new Error("This code clearly is broken");
-      } catch (error) {
-        TrackJS.track(error);
-      }
-    })
+      foo();
+    });
 
   </script>
   
